@@ -1,1 +1,1 @@
-# kyushu_future_web
+# Kyushu_Lecture_Web
