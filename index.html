@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="九州大学から見る未来社会 — AI・半導体・水素エネルギーと台日大学連携" />
+  <title>九州大学から見る未来社会</title>
+  <style>
+    :root{
+      --navy:#082b55; --blue:#0a5ea8; --sky:#eaf5ff; --ink:#11243a;
+      --gold:#d8a43a; --white:#fff; --muted:#61758a; --card:#ffffff;
+      --shadow:0 18px 50px rgba(8,43,85,.15);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:linear-gradient(180deg,#f8fbff 0,#eef6ff 100%);line-height:1.7}
+    a{color:inherit;text-decoration:none}
+    .hero{min-height:88vh;display:grid;place-items:center;position:relative;overflow:hidden;background:#061f3b}
+    .hero::before{content:"";position:absolute;inset:0;background:url('assets/page-01.jpg') center/cover no-repeat;filter:saturate(1.05) brightness(.72)}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,23,44,.12),rgba(4,23,44,.75))}
+    .hero-inner{position:relative;z-index:1;width:min(1100px,92vw);color:#fff;text-align:center;padding:80px 20px}
+    .kicker{letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;opacity:.9}
+    h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:clamp(2.5rem,7vw,6.4rem);line-height:1.08;margin:.3em 0 .2em;text-shadow:0 4px 18px rgba(0,0,0,.2)}
+    .subtitle{font-size:clamp(1rem,2.2vw,1.6rem);margin:0 auto 1.8rem;max-width:880px}
+    .speaker{font-size:1.05rem;opacity:.95}
+    .cta{display:inline-block;margin-top:2rem;padding:.8rem 1.2rem;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(8px)}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(8,43,85,.08)}
+    .nav{width:min(1180px,94vw);margin:auto;display:flex;gap:10px;align-items:center;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav a{white-space:nowrap;padding:8px 12px;border-radius:999px;font-size:.9rem;color:var(--navy)}
+    .nav a:hover{background:#e9f4ff}
+    main{width:min(1180px,94vw);margin:0 auto;padding:48px 0 80px}
+    .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;background:#fff;border-radius:28px;padding:34px;box-shadow:var(--shadow);margin-bottom:56px}
+    .intro h2,.section-head h2{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;color:var(--navy);font-size:clamp(1.8rem,4vw,3.3rem);margin:.1em 0 .35em}
+    .intro p{margin:.6em 0;color:#40566e}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .stat{background:linear-gradient(160deg,#0a5ea8,#0b3f77);color:#fff;padding:20px;border-radius:20px;text-align:center}
+    .stat b{display:block;font-size:1.65rem}
+    .section{margin:72px 0}
+    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:24px}
+    .section-head p{max-width:540px;color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .slide{background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(12,53,94,.12);border:1px solid rgba(10,94,168,.08);transition:.25s transform,.25s box-shadow}
+    .slide:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(12,53,94,.18)}
+    .slide img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;background:#d9e9f7;cursor:zoom-in}
+    .cap{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 16px 16px}
+    .cap strong{color:var(--navy)}
+    .cap span{font-size:.8rem;color:var(--muted)}
+    .highlight{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;align-items:center;background:linear-gradient(135deg,#062a53,#0a6ab8);color:#fff}
+    .highlight img{height:100%;object-fit:cover}
+    .highlight .copy{padding:clamp(26px,5vw,60px)}
+    .highlight h3{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:clamp(1.8rem,4vw,3.6rem);margin:0 0 .4em}
+    .highlight p{color:#e3f1ff;font-size:1.05rem}
+    .quote{border-left:4px solid var(--gold);padding-left:18px;margin:1.2rem 0;font-size:1.08rem}
+    footer{background:#061f3b;color:#dbeaff;text-align:center;padding:46px 20px}
+    footer strong{color:white}
+    dialog{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh}
+    dialog::backdrop{background:rgba(0,15,32,.86)}
+    dialog img{max-width:92vw;max-height:90vh;display:block;border-radius:12px;box-shadow:0 20px 80px rgba(0,0,0,.5)}
+    .close{position:fixed;top:18px;right:22px;border:0;background:#fff;color:#123;padding:10px 14px;border-radius:999px;font-size:1rem;cursor:pointer}
+    @media(max-width:800px){
+      .hero{min-height:76vh}.intro{grid-template-columns:1fr;padding:24px}.stats{grid-template-columns:1fr 1fr 1fr}.grid{grid-template-columns:1fr}.highlight{grid-template-columns:1fr}.section-head{display:block}.section{margin:54px 0}
+    }
+    @media(max-width:520px){.stats{grid-template-columns:1fr}.nav a{font-size:.82rem}.cap{padding:12px 14px}.hero-inner{padding:56px 14px}}
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="kicker">KYUSHU UNIVERSITY × TAIWAN</div>
+      <h1>九州大学から見る<br>未来社会</h1>
+      <p class="subtitle">AI・半導体・水素エネルギーと台日大学連携</p>
+      <p class="speaker">国立台湾師範大学 名誉教授　林 震煌</p>
+      <a class="cta" href="#overview">講演内容を見る ↓</a>
+    </div>
+  </header>
+
+  <div class="topbar">
+    <nav class="nav">
+      <a href="#overview">概要</a>
+      <a href="#history">九州大学</a>
+      <a href="#future">未来技術</a>
+      <a href="#society">社会実装</a>
+      <a href="#vision">VISION2030</a>
+      <a href="#taiwan">台日連携</a>
+      <a href="#conclusion">結論</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="intro" id="overview">
+      <div>
+        <div class="kicker" style="color:#0a5ea8">LECTURE OVERVIEW</div>
+        <h2>大学から、未来社会を見る。</h2>
+        <p>九州大学の歴史と研究基盤を起点に、AI・半導体・水素エネルギー、さらに大学と産業・地域・国際社会の連携を通して、これからの台日協力を考える講演です。</p>
+        <p class="quote">「競争」だけではなく、「共創」へ。大学は、人材・研究・産業をつなぐ架け橋になれる。</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>27</b>スライド</div>
+        <div class="stat"><b>3</b>重点技術</div>
+        <div class="stat"><b>台日</b>大学連携</div>
+      </div>
+    </section>
+
+    <section class="section" id="history">
+      <div class="section-head"><div><div class="kicker" style="color:#0a5ea8">01</div><h2>九州大学を知る</h2></div><p>1911年の創立から、アインシュタインの訪問、伊都キャンパスまで。九州大学の背景を短くたどります。</p></div>
+      <div class="grid">
+        <article class="slide"><img src="assets/page-02.jpg" alt="九州大学の歴史"><div class="cap"><strong>九州大学の歴史</strong><span>02 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-03.jpg" alt="1922年アインシュタイン九州帝国大学訪問"><div class="cap"><strong>1922年、アインシュタイン来訪</strong><span>03 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-04.jpg" alt="THE大学ランキング2025"><div class="cap"><strong>日本を代表する研究大学</strong><span>04 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-05.jpg" alt="伊都キャンパス"><div class="cap"><strong>伊都キャンパス</strong><span>05 / 27</span></div></article>
+        <article class="slide highlight"><img src="assets/page-06.jpg" alt="伊都キャンパスの広さ"><div class="copy"><div class="kicker">ITO CAMPUS</div><h3>自然の中に、最先端科学がある。</h3><p>広大な伊都キャンパスは、教育・研究・産学連携が集まる「研究都市」のような空間です。</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="future">
+      <div class="section-head"><div><div class="kicker" style="color:#0a5ea8">02</div><h2>未来社会を支える研究</h2></div><p>九州大学の幅広い強みの中から、特に未来社会の基盤となるAI・半導体・水素エネルギーに注目します。</p></div>
+      <div class="grid">
+        <article class="slide"><img src="assets/page-07.jpg" alt="九州大学の10大特色"><div class="cap"><strong>九州大学の10大特色</strong><span>07 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-08.jpg" alt="AI・データサイエンス"><div class="cap"><strong>AI・データサイエンス</strong><span>08 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-09.jpg" alt="半導体研究・人材育成"><div class="cap"><strong>半導体研究・人材育成</strong><span>09 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-10.jpg" alt="水素・脱炭素・エネルギー"><div class="cap"><strong>水素・脱炭素・エネルギー</strong><span>10 / 27</span></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="society">
+      <div class="section-head"><div><div class="kicker" style="color:#0a5ea8">03</div><h2>研究を社会につなぐ</h2></div><p>ビジネス、起業、アジア連携、デザイン、量子、医学、農学。研究成果を社会価値へ変えるための多様な基盤です。</p></div>
+      <div class="grid">
+        <article class="slide"><img src="assets/page-11.jpg" alt="QBS"><div class="cap"><strong>QBS — MBA・MOT・アジアビジネス</strong><span>11 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-12.jpg" alt="QREC"><div class="cap"><strong>QREC — アントレプレナーシップ</strong><span>12 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-13.jpg" alt="Q-AOS"><div class="cap"><strong>Q-AOS — アジア・オセアニア</strong><span>13 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-14.jpg" alt="芸術工学・デザイン"><div class="cap"><strong>芸術工学・デザイン</strong><span>14 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-15.jpg" alt="量子技術"><div class="cap"><strong>量子技術・量子コンピューティング</strong><span>15 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-16.jpg" alt="医学・先端医療"><div class="cap"><strong>医学・先端医療・ライフサイエンス</strong><span>16 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-17.jpg" alt="農学・森林・環境科学"><div class="cap"><strong>農学・森林・環境科学</strong><span>17 / 27</span></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="vision">
+      <div class="section-head"><div><div class="kicker" style="color:#0a5ea8">04</div><h2>九州大学の現在と未来</h2></div><p>「総合知で社会変革を牽引する大学」へ。VISION2030と、新しい研究組織・国際展開を見ます。</p></div>
+      <div class="grid">
+        <article class="slide"><img src="assets/page-18.jpg" alt="近年の発展"><div class="cap"><strong>近年の発展 2021–2026</strong><span>18 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-19.jpg" alt="VISION2030"><div class="cap"><strong>VISION2030</strong><span>19 / 27</span></div></article>
+        <article class="slide highlight"><img src="assets/page-20.jpg" alt="時空量子連携研究機構"><div class="copy"><div class="kicker">VISION 2030</div><h3>総合知で、社会変革を。</h3><p>既存の学問分野を越え、新しい研究領域と社会価値を生み出す。その象徴の一つが時空量子連携研究機構です。</p></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="taiwan">
+      <div class="section-head"><div><div class="kicker" style="color:#0a5ea8">05</div><h2>台湾と日本をつなぐ</h2></div><p>半導体人材育成、海外校友会、KOOU×UAAT。交流から共同研究・人材育成・共創へ。</p></div>
+      <div class="grid">
+        <article class="slide"><img src="assets/page-21.jpg" alt="九州大学と陽明交通大学のMOU"><div class="cap"><strong>九州大学 × 陽明交通大学</strong><span>21 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-22.jpg" alt="海外校友会とKYUDAI NOW"><div class="cap"><strong>海外校友会とKYUDAI NOW</strong><span>22 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-23.jpg" alt="KOOUとUAATによる国際連携"><div class="cap"><strong>KOOU × UAAT 国際連携</strong><span>23 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-24.jpg" alt="KOOU UAAT参加大学一覧"><div class="cap"><strong>23大学のネットワーク</strong><span>24 / 27</span></div></article>
+        <article class="slide"><img src="assets/page-25.jpg" alt="KOOU UAAT連携の主な分野"><div class="cap"><strong>連携の主な分野</strong><span>25 / 27</span></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="conclusion">
+      <div class="section-head"><div><div class="kicker" style="color:#0a5ea8">06</div><h2>結論 — 競争から共創へ</h2></div><p>AIは知能、半導体は計算基盤、エネルギーは社会を動かす力。台湾と日本は、その三つをつなぐパートナーへ。</p></div>
+      <div class="grid">
+        <article class="slide highlight"><img src="assets/page-26.jpg" alt="台湾と日本の連携"><div class="copy"><div class="kicker">CONCLUSION</div><h3>台湾 × 日本<br>ともに未来社会をつくる。</h3><p>研究・産業・人材をつなぎ、大学が次の時代の架け橋になる。</p></div></article>
+        <article class="slide" style="grid-column:1/-1"><img src="assets/page-27.jpg" alt="ご清聴ありがとうございました" style="aspect-ratio:auto;max-height:720px;object-fit:contain;background:#0b5ea2"><div class="cap"><strong>ご清聴ありがとうございました</strong><span>27 / 27</span></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><strong>九州大学から見る未来社会</strong><br>AI・半導体・水素エネルギーと台日大学連携</footer>
+
+  <dialog id="viewer"><button class="close" aria-label="閉じる">✕</button><img id="viewerImg" alt="拡大表示"></dialog>
+  <script>
+    const dlg=document.getElementById('viewer'), vi=document.getElementById('viewerImg');
+    document.querySelectorAll('.slide img').forEach(img=>img.addEventListener('click',()=>{vi.src=img.src;vi.alt=img.alt;dlg.showModal()}));
+    document.querySelector('.close').addEventListener('click',()=>dlg.close());
+    dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  </script>
+</body>
+</html>
